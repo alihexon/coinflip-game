@@ -1,4 +1,4 @@
-let score = JSON.parse(localStorage.getItem('scoreCount')) || {
+let score = JSON.parse(localStorage.getItem('score')) || {
   win: 0,
   lose: 0,
 }
@@ -15,11 +15,16 @@ function playGame(guess) {
 
   if (guess === result) {
     score.win++
-    localStorage.setItem('scoreCount', JSON.stringify(score))
+    localStorage.setItem('score', JSON.stringify(score))
     alert(`You won\nWins: ${score.win} Loses: ${score.lose}`)
   } else {
     score.lose++
-    localStorage.setItem('scoreCount', JSON.stringify(score))
+    localStorage.setItem('score', JSON.stringify(score))
     alert(`You lose\nWins: ${score.win} Loses: ${score.lose}`)
   }
+}
+
+function playerChose(choose) {
+  let chosenSide = document.querySelector('.player-chose');
+  chosenSide.innerHTML = `You chose: ${choose}`;
 }
